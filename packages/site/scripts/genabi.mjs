@@ -1,6 +1,12 @@
 import * as fs from "fs";
 import * as path from "path";
 
+// Skip on Vercel
+if (process.env.VERCEL === "1") {
+  console.log("Skipping genabi on Vercel");
+  process.exit(0);
+}
+
 const CONTRACT_NAME = "SimpleFHEVoting";
 
 // <root>/packages/fhevm-hardhat-template
