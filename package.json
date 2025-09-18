@@ -10,6 +10,6 @@
     "packages/*"
   ],
   "scripts": {
-    "postinstall": "if [ \"$VERCEL\" != \"1\" ] && [ \"$NODE_ENV\" != \"production\" ]; then cd ./packages/site/ && npm run genabi; fi"
+    "postinstall": "echo 'Skipping genabi on Vercel'"
   }
 }
