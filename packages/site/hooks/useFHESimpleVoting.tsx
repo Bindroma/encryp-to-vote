@@ -140,6 +140,11 @@ export const useFHESimpleVoting = ({
     setStatus("loading"); setError(null);
 
     try {
+      if (!ethersSigner) {
+        setError("Wallet not connected");
+        setStatus("error");
+        return;
+      }
       const caller = await ethersSigner.getAddress();
       const input = fhevmInstance.createEncryptedInput(contractAddress, caller);
       input.add8(candidateIndex);
