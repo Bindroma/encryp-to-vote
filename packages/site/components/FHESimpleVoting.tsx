@@ -54,7 +54,7 @@ export const FHESimpleVoting = ({ activeTab, onTabChange }: FHESimpleVotingProps
     fhevmInstance,
     ethersSigner: ethersSigner as ethers.Signer | null,
     ethersReadonlyProvider: ethersReadonlyProvider as ethers.Provider | null,
-    chainId,
+    chainId: chainId ?? 11155111, // Sepolia chainId fallback
     fhevmDecryptionSignatureStorage,
   });
 
