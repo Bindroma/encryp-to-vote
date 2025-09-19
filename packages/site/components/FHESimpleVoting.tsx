@@ -51,7 +51,7 @@ export const FHESimpleVoting = ({ activeTab, onTabChange }: FHESimpleVotingProps
     setToastMessage,
   } = useFHESimpleVoting({
     fhevmInstance,
-    ethersSigner,
+    ethersSigner: ethersSigner ?? null,
     ethersReadonlyProvider,
     chainId,
     fhevmDecryptionSignatureStorage,
