@@ -1,6 +1,7 @@
 "use client";
 
 import { ethers } from "ethers";
+import { useEffect, useState } from "react";
 import { useFhevm } from "../fhevm/useFhevm";
 import { useInMemoryStorage } from "../hooks/useInMemoryStorage";
 import { useWagmiEthersSigner } from "../hooks/useWagmiEthersSigner";
@@ -13,7 +14,13 @@ interface FHESimpleVotingProps {
 }
 
 export const FHESimpleVoting = ({ activeTab, onTabChange }: FHESimpleVotingProps) => {
+  const [isMounted, setIsMounted] = useState(false);
   const { storage: fhevmDecryptionSignatureStorage } = useInMemoryStorage();
+  
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const {
     provider,
     chainId,
@@ -57,6 +64,15 @@ export const FHESimpleVoting = ({ activeTab, onTabChange }: FHESimpleVotingProps
     chainId: chainId ?? 11155111, // Sepolia chainId fallback
     fhevmDecryptionSignatureStorage,
   });
+
+  // Tránh hydration mismatch - chỉ render sau khi mount
+  if (!isMounted) {
+    return (
+      <div className="flex flex-col items-center justify-center p-8 min-h-[60vh]">
+        <h2 className="text-2xl font-bold mb-4">Loading...</h2>
+      </div>
+    );
+  }
 
   if (!isConnected) {
     return (
