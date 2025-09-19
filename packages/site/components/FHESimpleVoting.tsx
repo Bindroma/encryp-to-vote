@@ -1,5 +1,6 @@
 "use client";
 
+import { ethers } from "ethers";
 import { useFhevm } from "../fhevm/useFhevm";
 import { useInMemoryStorage } from "../hooks/useInMemoryStorage";
 import { useWagmiEthersSigner } from "../hooks/useWagmiEthersSigner";
@@ -51,8 +52,8 @@ export const FHESimpleVoting = ({ activeTab, onTabChange }: FHESimpleVotingProps
     setToastMessage,
   } = useFHESimpleVoting({
     fhevmInstance,
-    ethersSigner: ethersSigner ?? null,
-    ethersReadonlyProvider: ethersReadonlyProvider ?? null,
+    ethersSigner: ethersSigner as ethers.Signer | null,
+    ethersReadonlyProvider: ethersReadonlyProvider as ethers.Provider | null,
     chainId,
     fhevmDecryptionSignatureStorage,
   });
