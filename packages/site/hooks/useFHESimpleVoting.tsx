@@ -11,6 +11,7 @@ interface UseFHESimpleVotingProps {
   ethersSigner: ethers.Signer | null;
   ethersReadonlyProvider: ethers.Provider | null;
   chainId: number;
+  fhevmDecryptionSignatureStorage: any;
 }
 
 export const useFHESimpleVoting = ({
@@ -18,6 +19,7 @@ export const useFHESimpleVoting = ({
   ethersSigner,
   ethersReadonlyProvider,
   chainId,
+  fhevmDecryptionSignatureStorage,
 }: UseFHESimpleVotingProps) => {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
