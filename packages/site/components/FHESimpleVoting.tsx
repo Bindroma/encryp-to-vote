@@ -37,7 +37,6 @@ export const FHESimpleVoting = ({ activeTab, onTabChange }: FHESimpleVotingProps
     vote,
     getResults,
     decryptPublicResults,
-    candidates,
     results,
     decryptedResults,
     openVoting,
