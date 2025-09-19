@@ -52,7 +52,7 @@ export const FHESimpleVoting = ({ activeTab, onTabChange }: FHESimpleVotingProps
   } = useFHESimpleVoting({
     fhevmInstance,
     ethersSigner: ethersSigner ?? null,
-    ethersReadonlyProvider,
+    ethersReadonlyProvider: ethersReadonlyProvider ?? null,
     chainId,
     fhevmDecryptionSignatureStorage,
   });
