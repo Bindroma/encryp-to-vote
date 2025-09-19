@@ -94,7 +94,7 @@ export const FHESimpleVoting = ({ activeTab, onTabChange }: FHESimpleVotingProps
                   <span className="font-bold text-2xl">Zama Mascot</span>
                   <div className="w-52 h-52 rounded-[8px] mt-2 mb-4 overflow-hidden relative border border-gray-400">
                     <img 
-                      src="/zama-logo.svg" 
+                      src="/voting-01.png" 
                       alt="Zama Voting"
                       className="w-full h-full object-cover"
                     />
