@@ -4,7 +4,7 @@ import { useAccount, useConnect, useDisconnect } from 'wagmi';
 import { useState, useEffect, useRef } from 'react';
 
 export const WalletButton = () => {
-  const { address, isConnected, chainId } = useAccount();
+  const { address, isConnected } = useAccount();
   const { connect, connectors, isPending } = useConnect();
   const { disconnect } = useDisconnect();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
