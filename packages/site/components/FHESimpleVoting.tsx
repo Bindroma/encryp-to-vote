@@ -67,11 +67,11 @@ export const FHESimpleVoting = ({ activeTab, onTabChange }: FHESimpleVotingProps
   }
 
   if (fhevmStatus === "error") {
-    return <p className="text-red-600">FHEVM Error: {fhevmError?.message || String(fhevmError)}</p>;
+    return <p className="text-red-600">FHEVM Error: {fhevmError ? String(fhevmError) : "Unknown error"}</p>;
   }
 
   if (fheVotingStatus === "error") {
-    return <p className="text-red-600">Voting Error: {fheVotingError?.message || String(fheVotingError)}</p>;
+    return <p className="text-red-600">Voting Error: {fheVotingError ? String(fheVotingError) : "Unknown error"}</p>;
   }
 
   return (
