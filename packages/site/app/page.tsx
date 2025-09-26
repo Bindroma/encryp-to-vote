@@ -1,24 +1,52 @@
 "use client";
 
-import { useState } from "react";
-import { FHESimpleVoting } from "@/components/FHESimpleVoting";
-import { TabNavigation } from "@/components/TabNavigation";
+import { FHEVoting } from "@/components/FHEVoting";
+import { useNavigation } from "@/contexts/NavigationContext";
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState("active");
+  const { activeMainTab } = useNavigation();
 
   return (
-    <div className="flex flex-col gap-8 items-center w-full h-full px-3 md:px-0">
-      {/* Tab Navigation - Ẩn khi ở chế độ voting */}
-      {activeTab !== "voting" && (
-        <div className="w-full bg-white shadow-sm z-10 px-4 py-4">
-          <TabNavigation activeTab={activeTab} onTabChange={setActiveTab} />
-        </div>
-      )}
-      
+    <div className="h-full">
       {/* Main Content */}
-      <div className="w-full flex-1 overflow-auto">
-        <FHESimpleVoting activeTab={activeTab} onTabChange={setActiveTab} />
+      <div className="h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {activeMainTab === "voting" && (
+          <div className="h-full bg-white rounded-lg shadow-sm border border-gray-200 p-2.5">
+            <FHEVoting />
+          </div>
+        )}
+        
+        {activeMainTab === "governance" && (
+          <div className="h-full bg-white rounded-lg shadow-sm border border-gray-200 p-2.5">
+            <div className="text-center">
+              <div className="text-6xl mb-4">🔒</div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">DAO Governance</h2>
+              <p className="text-gray-600 mb-6">Decentralized governance features coming soon...</p>
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <p className="text-blue-800 text-sm">
+                  This section will include proposal creation, voting on governance decisions, 
+                  and community-driven protocol upgrades.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+        
+        {activeMainTab === "faucet" && (
+          <div className="h-full bg-white rounded-lg shadow-sm border border-gray-200 p-2.5">
+            <div className="text-center">
+              <div className="text-6xl mb-4">💧</div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Test Token Faucet</h2>
+              <p className="text-gray-600 mb-6">Get test tokens for development and testing...</p>
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                <p className="text-green-800 text-sm">
+                  This section will allow users to request test tokens (ETH, USDC, etc.) 
+                  for testing the FHE voting system on Sepolia testnet.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

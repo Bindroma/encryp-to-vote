@@ -2,8 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  height: 100%;
+}
+
 .zama-bg {
   background-color: #ffd200;
+}
+
+.app-header-bg {
+  background-color: #001f1f;
+}
+
+.primary-accent {
+  background-color: #00cec1;
+  color: white;
+}
+
+.primary-accent:hover {
+  background-color: #00b8b0;
+}
+
+.text-primary {
+  color: #ffffff;
+}
+
+.text-secondary {
+  color: #9ca3af;
 }
 
 @keyframes slide-in {
@@ -19,4 +44,12 @@
 
 .animate-slide-in {
   animation: slide-in 0.3s ease-out;
+}
+
+/* Line clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

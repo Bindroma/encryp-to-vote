@@ -7,7 +7,7 @@ if (process.env.VERCEL === "1") {
   process.exit(0);
 }
 
-const CONTRACT_NAME = "SimpleFHEVoting";
+const CONTRACT_NAMES = ["SimpleFHEVoting", "MultiSessionFHEVoting"];
 
 // <root>/packages/fhevm-hardhat-template
 const rel = "../fhevm-hardhat-template";
@@ -71,25 +71,23 @@ function readDeployment(chainName, chainId, contractName, optional) {
   return obj;
 }
 
-// Only use Sepolia network data
-const deploySepolia = readDeployment("sepolia", 11155111, CONTRACT_NAME, false /* required */);
+// Generate ABI and addresses for all contracts
+for (const CONTRACT_NAME of CONTRACT_NAMES) {
+  const deploySepolia = readDeployment("sepolia", 11155111, CONTRACT_NAME, true /* optional */);
 
-if (!deploySepolia) {
-  console.error(
-    `${line}Unable to find Sepolia deployment. Please deploy the contract on Sepolia network first.${line}`
-  );
-  process.exit(1);
-}
+  if (!deploySepolia) {
+    console.log(`⚠️  Skipping ${CONTRACT_NAME} - no Sepolia deployment found`);
+    continue;
+  }
 
-
-const tsCode = `
+  const tsCode = `
 /*
   This file is auto-generated.
   Command: 'npm run genabi'
 */
 export const ${CONTRACT_NAME}ABI = ${JSON.stringify({ abi: deploySepolia.abi }, null, 2)} as const;
 \n`;
-const tsAddresses = `
+  const tsAddresses = `
 /*
   This file is auto-generated.
   Command: 'npm run genabi'
@@ -99,13 +97,13 @@ export const ${CONTRACT_NAME}Addresses = {
 };
 `;
 
-console.log(`Generated ${path.join(outdir, `${CONTRACT_NAME}ABI.ts`)}`);
-console.log(`Generated ${path.join(outdir, `${CONTRACT_NAME}Addresses.ts`)}`);
-console.log(tsAddresses);
+  console.log(`Generated ${path.join(outdir, `${CONTRACT_NAME}ABI.ts`)}`);
+  console.log(`Generated ${path.join(outdir, `${CONTRACT_NAME}Addresses.ts`)}`);
 
-fs.writeFileSync(path.join(outdir, `${CONTRACT_NAME}ABI.ts`), tsCode, "utf-8");
-fs.writeFileSync(
-  path.join(outdir, `${CONTRACT_NAME}Addresses.ts`),
-  tsAddresses,
-  "utf-8"
-);
+  fs.writeFileSync(path.join(outdir, `${CONTRACT_NAME}ABI.ts`), tsCode, "utf-8");
+  fs.writeFileSync(
+    path.join(outdir, `${CONTRACT_NAME}Addresses.ts`),
+    tsAddresses,
+    "utf-8"
+  );
+}

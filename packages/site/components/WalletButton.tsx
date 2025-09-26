@@ -43,7 +43,7 @@ export const WalletButton = () => {
   // Tránh hydration mismatch - chỉ render sau khi mount
   if (!isMounted) {
     return (
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-[200px]">
+      <button className="primary-accent font-bold py-2 px-4 rounded w-[180px]">
         Connect Wallet
       </button>
     );
@@ -54,13 +54,13 @@ export const WalletButton = () => {
       <div className="relative" ref={dropdownRef}>
         <button
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-[200px]"
+          className="primary-accent font-bold py-2 px-4 rounded w-[180px]"
         >
           {address?.slice(0, 6)}...{address?.slice(-4)}
         </button>
         
         {isDropdownOpen && (
-          <div className="absolute right-0 mt-2 w-[200px] bg-white rounded shadow-lg z-50 border">
+          <div className="absolute right-0 mt-2 w-[180px] bg-white rounded shadow-lg z-50 border">
             {/* Dòng trên: Địa chỉ + icon copy */}
             <div className="px-4 py-2 border-b border-gray-200">
               <div className="flex items-center justify-between">
@@ -104,7 +104,7 @@ export const WalletButton = () => {
         }
       }}
       disabled={isPending}
-      className="bg-blue-500 hover:bg-blue-700 disabled:bg-gray-400 text-white font-bold py-2 px-4 rounded w-[200px]"
+      className="primary-accent disabled:bg-gray-400 font-bold py-2 px-4 rounded w-[180px]"
     >
       {isPending ? 'Connecting...' : 'Connect Wallet'}
     </button>
