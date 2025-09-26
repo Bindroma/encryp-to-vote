@@ -32,21 +32,6 @@ export default function Home() {
           </div>
         )}
         
-        {activeMainTab === "faucet" && (
-          <div className="h-full bg-white rounded-lg shadow-sm border border-gray-200 p-2.5">
-            <div className="text-center">
-              <div className="text-6xl mb-4">💧</div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Test Token Faucet</h2>
-              <p className="text-gray-600 mb-6">Get test tokens for development and testing...</p>
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                <p className="text-green-800 text-sm">
-                  This section will allow users to request test tokens (ETH, USDC, etc.) 
-                  for testing the FHE voting system on Sepolia testnet.
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

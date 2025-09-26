@@ -4,5 +4,5 @@
   Command: 'npm run genabi'
 */
 export const MultiSessionFHEVotingAddresses = { 
-  "11155111": { address: "0x787f79496Ff39CB8DeAEB95e7383F8B0029B2E43", chainId: 11155111, chainName: "sepolia" },
+  "11155111": { address: "0x5908b4c2Ca9F7Bea549c5A85185388Fbdc326022", chainId: 11155111, chainName: "sepolia" },
 };

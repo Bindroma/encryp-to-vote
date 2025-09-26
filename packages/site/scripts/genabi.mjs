@@ -7,7 +7,7 @@ if (process.env.VERCEL === "1") {
   process.exit(0);
 }
 
-const CONTRACT_NAMES = ["SimpleFHEVoting", "MultiSessionFHEVoting"];
+const CONTRACT_NAMES = ["MultiSessionFHEVoting"];
 
 // <root>/packages/fhevm-hardhat-template
 const rel = "../fhevm-hardhat-template";

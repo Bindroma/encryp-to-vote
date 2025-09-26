@@ -12,11 +12,8 @@ export const AppHeader = () => {
     },
     { 
       id: "governance", 
-      label: "Governance"
-    },
-    { 
-      id: "faucet", 
-      label: "Faucet"
+      label: "Governance (Soon)",
+      disabled: true
     },
   ];
 
@@ -35,9 +32,12 @@ export const AppHeader = () => {
             {tabs.map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setActiveMainTab(tab.id)}
+                onClick={() => !tab.disabled && setActiveMainTab(tab.id)}
+                disabled={tab.disabled}
                 className={`group relative px-4 py-2 rounded text-sm font-bold transition-all duration-200 ${
-                  activeMainTab === tab.id
+                  tab.disabled
+                    ? "text-gray-500 cursor-not-allowed"
+                    : activeMainTab === tab.id
                     ? "primary-accent"
                     : "text-secondary hover:text-primary hover:bg-gray-700"
                 }`}
